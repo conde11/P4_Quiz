@@ -9,10 +9,10 @@ exports.helpCmd = rl =>{
     log(" add - Añadir un nuevo quiz interactivamente");
     log("delete <id> - Borrar el quiz indicado");
     log(" edit <id> - Editar el quiz indicado.");
-    log("test <id> - Probar el quiz indicado ");
-    log("p|play - Jugar a preguntar aleatoriamente todos los quizzes");
+    log("test <id> - Probar el quiz indicado. ");
+    log("p|play - Jugar a preguntar aleatoriamente todos los quizzes.");
     log("credits - Creditos.");
-    log("q|quit - Salir del programa");
+    log("q|quit - Salir del programa.");
     rl.prompt();
 };
 
@@ -100,7 +100,7 @@ exports.testCmd = (rl,id) =>
 
         try{
             const quiz = model.getByIndex (id);
-            rl.question(colorize(`${quiz.question}`,'red'), answer =>
+            rl.question(colorize(`${quiz.question}? `,'red' ), answer =>
             {
 
                 // let texto1 = answer.split("");
@@ -187,7 +187,7 @@ exports.editCmd = (rl,id) =>
                 process.stdout.isTTY && setTimeout(()=> {rl.write(quiz.answer)},0);
                 rl.question(colorize('Introduzca la respuesta: ', 'red'), answer => {
                 model.update(id, question, answer);
-            log(`Se ha cambiado el quiz ${colorize(id, 'magenta')} por: ${question} ${colorize(id, 'magenta')}`);
+            log(`Se ha cambiado el quiz ${colorize(id, 'magenta')} por: ${question} ${colorize('=>','magenta')} ${answer}`);
             rl.prompt();
         })
             ;
@@ -204,7 +204,7 @@ exports.editCmd = (rl,id) =>
 exports.creditsCmd = rl =>
 {
 
-    log('CRISTINA');
+    log('CRISTINA GONZALEZ Y DANIEL CONDE PARRAGA');
 
     rl.prompt();
 };

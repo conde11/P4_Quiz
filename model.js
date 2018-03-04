@@ -3,19 +3,19 @@ const DB_FILENAME = "quizzes.json";
 
 let quizzes = [
     {
-        question: "Capital de Italia?  ",
+        question: "Capital de Italia",
         answer: "Roma"
     },
     {
-        question: "Capital de Francia?  ",
-        answer: "Paris"
+        question: "Capital de Francia",
+        answer: "París"
     },
     {
-        question: "Capital de España?  ",
+        question: "Capital de España",
         answer: "Madrid"
     },
     {
-        question: "Capital de Portugal?  ",
+        question: "Capital de Portugal",
         answer: "Lisboa"
     }
 ];
