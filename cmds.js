@@ -21,9 +21,9 @@ exports.helpCmd = rl =>{
 exports.addCmd = rl =>
 {
     rl.question(colorize(' Introduzca una pregunta: ', 'red'),question => {
-        rl.question(colorize ('Introduzca la respuesta:', 'red'), answer => {
+        rl.question(colorize ('Introduzca la respuesta: ', 'red'), answer => {
             model.add(question, answer);
-            log(` ${colorize('Se ha añadido','magenta')}: ${question} ${colorize('=>','magenta')} ${answer}`);
+            log(` ${colorize('Se ha añadido: ','magenta')}: ${question} ${colorize('=>','magenta')} ${answer}`);
             rl.prompt();
         });
     });
@@ -55,27 +55,68 @@ exports.showCmd  = (rl,id) =>
 };
 exports.testCmd = (rl,id) =>
 {
-   // if id undefine
-    //prompt
-    //else
+    if (typeof id === "undefined") {
+        errorlog(`Falta el parametro id`);
 
-      //  try
+    rl.prompt();
+}else {
 
-        //quiz =
-         //rl.question quiz.question resp =>{
-          //respuesta === quiz.answer CORRECTO o INCORRECTO
-        //prompt
-//}
+        try{
+            const quiz = model.getByIndex (id);
+            rl.question(colorize(`${quiz.question}`,'red'), answer =>
+            {
 
-  //      catch
-    //        prompt
-            
+                let texto1 = answer.split("");
+                textoF1= texto1[0].toLowerCase().trim();
+
+                let texto2 = quiz.answer.split("");
+                textoF2= texto2[0].toLowerCase().trim();
+
+                if(textoF1 === textoF1){
+
+
+                biglog ('Correcto','green');
+            }else{
+                biglog('Incorrecto','red');
+            }
+            rl.prompt();
+
+        });
+
+
+        }catch (error){
+            errorlog (error.message);
+            rl.prompt();
+
+        }
+        }
 };
 
 exports.playCmd =rl =>
 {
-    log('Jugar', 'red');
-    rl.prompt();
+    let score = 0;
+    let toBeResolved = [];
+    //for ([idm=0];[idm<model.count()];[id++]){
+    // cont playONE =() => {
+    // if ( vacio toBeResolved){
+    // mensaje
+    //resultados variables score
+    //prompt()
+    // } else {
+    // let id = azar; quitar del array Math.ramdom()
+    //let quiz = model saco pregunta asociada de id
+    // rl.question (quiz.question, resp => {
+    // resp === quiz.answer);
+    // OK -> mensaje, sacar los puntos y sumarle uno
+
+    // llamar a playOne, tengo que volver a preguntar si quedan preguntas
+    // NO OK -> mensaje, sacar resultados y socre
+    //prompt()
+// }
+
+//}
+
+    // llamar a playone
 };
 exports.deleteCmd = (rl,id) =>
 {
@@ -123,9 +164,9 @@ exports.editCmd = (rl,id) =>
 
 exports.creditsCmd = rl =>
 {
-    log('Autores de la practica:');
-    log('Nombre1: Cristina Gonzalez Alcala','green');
-    log('Nombre2: Daniel Conde Parraga','green');
+
+    log('CRISTINA');
+
     rl.prompt();
 };
 exports.quitCmd = rl => {

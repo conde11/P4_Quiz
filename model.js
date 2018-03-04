@@ -3,19 +3,19 @@ const DB_FILENAME = "quizzes.json";
 
 let quizzes = [
     {
-        question: "Capital de Italia",
+        question: "Capital de Italia?  ",
         answer: "Roma"
     },
     {
-        question: "Capital de Francia",
+        question: "Capital de Francia?  ",
         answer: "Paris"
     },
     {
-        question: "Capital de España",
+        question: "Capital de España?  ",
         answer: "Madrid"
     },
     {
-        question: "Capital de Portugal",
+        question: "Capital de Portugal?  ",
         answer: "Lisboa"
     }
 ];
@@ -57,8 +57,8 @@ exports.update = (id, question, answer) => {
         throw new Error (`El valor del parametro id no es valido.`);
     }
     quizzes.splice(id,1,{
-        question: (question || "").trim(),
-        answer: (answer || "").trim()
+        question: (question || " ").trim(),
+        answer: (answer || " ").trim()
     });
     save();
 
