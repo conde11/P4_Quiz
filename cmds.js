@@ -112,10 +112,10 @@ exports.testCmd = (rl,id) =>
 
                 if(textoF1 === textoF2){
 
-                    log (colorize('Su respuesta es: ', 'black'));
+                    log (colorize('Su respuesta es correcta. ', 'black'));
                     biglog ('Correcto','green');
                 }else{
-                    log (colorize('Su respuesta es: ', 'black'));
+                    log (colorize('Su respuesta es incorrecta. ', 'black'));
                     biglog('Incorrecto','red');
                 }
                 rl.prompt();
