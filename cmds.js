@@ -112,9 +112,10 @@ exports.testCmd = (rl,id) =>
 
                 if(textoF1 === textoF2){
 
-
+                    log (colorize('Su respuesta es: ', 'black'));
                     biglog ('Correcto','green');
                 }else{
+                    log (colorize('Su respuesta es: ', 'black'));
                     biglog('Incorrecto','red');
                 }
                 rl.prompt();
@@ -149,7 +150,7 @@ exports.playCmd =rl =>
 
     // llamar a playOne, tengo que volver a preguntar si quedan preguntas
     // NO OK -> mensaje, sacar resultados y socre
-    el.prompt() ;
+    rl.prompt() ;
 //}
 
 }
