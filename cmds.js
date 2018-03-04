@@ -133,14 +133,14 @@ exports.testCmd = (rl,id) =>
 
 exports.playCmd =rl =>
 {
-    let score = 0;
-    let toBeResolved = [];
-    for ([idm=0];[idm<model.count()];[id++]){
+    //let score = 0;
+   // let toBeResolved = [];
+    //for ([idm=0];[idm<model.count()];[id++]){
     // cont playONE =() => {
     // if ( vacio toBeResolved){
     // mensaje
     //resultados variables score
-     rl.prompt();
+    // rl.prompt();
     // } else {
     // let id = azar; quitar del array Math.ramdom()
     //let quiz = model saco pregunta asociada de id
@@ -150,10 +150,10 @@ exports.playCmd =rl =>
 
     // llamar a playOne, tengo que volver a preguntar si quedan preguntas
     // NO OK -> mensaje, sacar resultados y socre
-    rl.prompt() ;
+  //  rl.prompt() ;
 //}
 
-}
+//}
 
     // llamar a playone
 };
