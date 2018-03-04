@@ -53,35 +53,73 @@ exports.showCmd  = (rl,id) =>
     }
     rl.prompt();
 };
+//exports.testCmd = (rl,id) =>
+//{
+  //  if (typeof id === "undefined") {
+    //    errorlog(`Falta el parametro id`);
+
+    //rl.prompt();
+//}else {
+
+  //      try{
+    //        const quiz = model.getByIndex (id);
+      //      rl.question(colorize(`${quiz.question}`,'red'), answer =>
+        //    {
+//let texto1 = answer.split("");
+  //            textoF1= texto1[0].toLowerCase().trim();
+
+    //            let texto2 = quiz.answer.split("");
+      //          textoF2= texto2[0].toLowerCase().trim();
+
+        //        if(textoF1 === textoF2){
+//
+  //              log (colorize('Su respuesta es: ', 'black'));
+    //            biglog('Correcto','green');
+      //      }else{
+        //        biglog('Incorrecto','red');
+          //  }
+            //rl.prompt();
+
+       // });
+
+
+        //}catch (error){
+          //  errorlog (error.message);
+            //rl.prompt();
+
+        //}
+        //}
+//};
 exports.testCmd = (rl,id) =>
 {
     if (typeof id === "undefined") {
         errorlog(`Falta el parametro id`);
 
-    rl.prompt();
-}else {
+        rl.prompt();
+    }else {
 
         try{
             const quiz = model.getByIndex (id);
             rl.question(colorize(`${quiz.question}`,'red'), answer =>
             {
 
-                let texto1 = answer.split("");
-                textoF1= texto1[0].toLowerCase().trim();
+                // let texto1 = answer.split("");
+                //textoF1= texto1[0].trim("").toLowerCase("");
+                    textoF1 = (answer.trim()).toLowerCase();
+                    textoF2 = (quiz.answer.trim()).toLowerCase();
+               // let texto2 = quiz.answer.split("");
+                //textoF2= texto2[0].trim("").toLowerCase("");
 
-                let texto2 = quiz.answer.split("");
-                textoF2= texto2[0].toLowerCase().trim();
-
-                if(textoF1 === textoF1){
+                if(textoF1 === textoF2){
 
 
-                biglog ('Correcto','green');
-            }else{
-                biglog('Incorrecto','red');
-            }
-            rl.prompt();
+                    biglog ('Correcto','green');
+                }else{
+                    biglog('Incorrecto','red');
+                }
+                rl.prompt();
 
-        });
+            });
 
 
         }catch (error){
@@ -89,19 +127,19 @@ exports.testCmd = (rl,id) =>
             rl.prompt();
 
         }
-        }
+    }
 };
 
 exports.playCmd =rl =>
 {
     let score = 0;
     let toBeResolved = [];
-    //for ([idm=0];[idm<model.count()];[id++]){
+    for ([idm=0];[idm<model.count()];[id++]){
     // cont playONE =() => {
     // if ( vacio toBeResolved){
     // mensaje
     //resultados variables score
-    //prompt()
+     rl.prompt();
     // } else {
     // let id = azar; quitar del array Math.ramdom()
     //let quiz = model saco pregunta asociada de id
@@ -111,10 +149,10 @@ exports.playCmd =rl =>
 
     // llamar a playOne, tengo que volver a preguntar si quedan preguntas
     // NO OK -> mensaje, sacar resultados y socre
-    //prompt()
-// }
-
+    el.prompt() ;
 //}
+
+}
 
     // llamar a playone
 };
