@@ -118,9 +118,9 @@ exports.testCmd = (rl, id) => {
                     console.log("Su respuesta es:");
 
                     if (answer.trim().toLowerCase() === quiz.answer.trim().toLowerCase()) {
-                        biglog("CORRECTO", "green");
+                        console.log("CORRECTO", "green");
                     } else {
-                        biglog("INCORRECTO", "red");
+                       console.biglog("INCORRECTO", "red");
                     }
                 });
         })
