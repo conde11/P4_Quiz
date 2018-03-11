@@ -120,7 +120,7 @@ exports.testCmd = (rl, id) => {
                     if (answer.trim().toLowerCase() === quiz.answer.trim().toLowerCase()) {
                         console.log("CORRECTO", "green");
                     } else {
-                       console.biglog("INCORRECTO", "red");
+                       console.log("INCORRECTO", "red");
                     }
                 });
         })
