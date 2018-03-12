@@ -118,9 +118,9 @@ exports.testCmd = (rl, id) => {
                     console.log("Su respuesta es:");
 
                     if (answer.trim().toLowerCase() === quiz.answer.trim().toLowerCase()) {
-                        console.log("CORRECTO", "green");
+                        log("CORRECTO", "green");
                     } else {
-                       console.log("INCORRECTO", "red");
+                        log("INCORRECTO", "red");
                     }
                 });
         })
@@ -136,36 +136,42 @@ exports.testCmd = (rl, id) => {
 exports.playCmd =rl => {
     let score = 0;
     let toBePlayed = [];
+
     models.quiz.findAll({raw:true})
         .then(quizzes =>{
             toBePlayed=quizzes;
-        })
+        });
     const playOne =() =>{
         return Promise.resolve()
             .then(()=>{
                 if(toBePlayed.length<=0){
-                    console.log("SE ACABO");
+                    log('No hay nada más que preguntar.');
+                    log(`Final del juego. Aciertos: ${score}`);
+                    biglog(`${score}`, 'magenta');
                     return;
                 }
                 let pos= Math.floor(Math.random()*toBePlayed.length);
                 let quiz = toBePlayed[pos];
                 toBePlayed.splice(pos,1);
-                return makeQuestion((rl,quiz.question)
+                return makeQuestion(rl,`${quiz.question} `)
                     .then(answer =>{
-                        if(answer.toLoweCase().trim()===quiz.answer.toLowerCase().trim()){
+                        if(answer.toLowerCase().trim()===quiz.answer.toLowerCase().trim()){
                             score++;
-                            console.log("chachi");
+                            log(`CORRECTO - Lleva ${score} ${colorize(' aciertos')}`);
                             return playOne();
 
                         }else{
-                            console.log("CACA");
+                            log('INCORRECTO.');
+
+                            log(`Fin del juego. Aciertos: ${score}`);
+                            biglog(`${score}`, 'magenta');
                         }
                     }
-                    ))
+                    )
             })
-    }
+    };
     models.quiz.findAll({raw:true})
-        .then(qizzes=>{
+        .then(quizzes=>{
             toBePlayed=quizzes;
         })
         .then(()=>{
